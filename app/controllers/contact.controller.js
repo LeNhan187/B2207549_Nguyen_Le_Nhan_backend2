@@ -11,6 +11,7 @@ exports.create = async (req, res, next) => {
     try {
         const ContactService = new ContactService(MongoDB.client);
         const document = await ContactService.create(req.body);
+        return res.send(document);
     } catch (error) {
         return next(
             new ApiError(500, `An error occurred while creating the contact`)
