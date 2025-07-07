@@ -50,14 +50,14 @@ class ContactService {
     }
 
     async update(id, payload) {
-        const filter = { _id: ObjectId.isValid(id) ? new ObjectId(id) : null };
+        const filter = { _id: ObjectId.isValid(id) ? new ObjectId(id) : null,};
         const update = this.extractContactData(payload);
         const result = await this.Contact.findOneAndUpdate(
             filter,
-            { $set: contact },
+            { $set: update },
             { returnDocument: 'after' }
         );
-        return result; // return result
+        return result.value; // return result
     }
 
     async delete(id) {
