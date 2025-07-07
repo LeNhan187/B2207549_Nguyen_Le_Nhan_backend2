@@ -67,13 +67,13 @@ class ContactService {
         return result;
     }
 
-    async findFavorites() {
+    async findFavorite() {
         return await this.find({ favorite: true });
     }
 
     async deleteAll() {
         const result = await this.Contact.deleteMany({});
-        return result;
+        return result.deletedCount;
     }
 }
 
